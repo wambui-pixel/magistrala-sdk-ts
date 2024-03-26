@@ -5,6 +5,7 @@ const defaultUrl = "http://localhost";
 
 const mySdk = new SDK({
   usersUrl: defaultUrl + ":9002",
+  domainsUrl: defaultUrl + ":8189",
   //     groupsUrl: defaultUrl + ":9002",
   //     thingsUrl: defaultUrl + ":9000",
   //     channelsUrl: defaultUrl + ":9000",
@@ -300,7 +301,7 @@ const mySdk = new SDK({
 //     });
 
 // mySdk.users.CreateToken(
-//     { identity: "admin@example.com", secret: "12345678" }
+//     { identity: "admin@example.com", secret: "12345678" , domain_id: "f248d057-283c-43f4-8ba1-13ffc5514c07"}
 // )
 //     .then((response: any) => {
 //         console.log(response);
@@ -496,6 +497,22 @@ const mySdk = new SDK({
 //         }
 //     });
 
+// mySdk.users.ListDomainUsers(
+//     "<domain_id>",
+//     { offset: 0, limit: 10 },
+//     "<token>"
+// )
+//     .then((response: any) => {
+//         console.log(response);
+//     })
+//     .catch((error: any) => {
+//         if (error.response) {
+//             console.error(error.response);
+//         } else {
+//             console.error(error.message);
+//         }
+//     });
+
 // mySdk.users.ResetPasswordRequest(
 //     "<email>"
 // )
@@ -513,6 +530,161 @@ const mySdk = new SDK({
 // mySdk.users.ResetPassword(
 //     "<password>",
 //     "<confPass>",
+//     "<token>"
+// )
+//     .then((response: any) => {
+//         console.log(response);
+//     })
+//     .catch((error: any) => {
+//         if (error.response) {
+//             console.error(error.response);
+//         } else {
+//             console.error(error.message);
+//         }
+//     });
+
+// Domains.js
+
+// mySdk.domains.CreateDomain(
+//     { name: "<domain_name>" , email: "<domain_email>" },
+//     "<token>"
+// )
+//     .then((response: any) => {
+//         console.log(response);
+//     })
+//     .catch((error: any) => {
+//         if (error.response) {
+//             console.error(error.response);
+//         } else {
+//             console.error(error.message);
+//         }
+//     });
+
+// mySdk.domains.UpdateDomain(
+//     { name: "video-games" , id: "f248d057-283c-43f4-8ba1-13ffc5514c07" },
+//     "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJkb21haW4iOiJmMjQ4ZDA1Ny0yODNjLTQzZjQtOGJhMS0xM2ZmYzU1MTRjMDciLCJleHAiOjE3MTE0NzE3NTYsImlhdCI6MTcxMTQ2ODE1NiwiaXNzIjoibWFnaXN0cmFsYS5hdXRoIiwic3ViIjoiNzA1YmMzYzYtN2Y5My00MWQ2LWJjNGMtMGE4N2Y4NWU0OTczIiwidHlwZSI6MCwidXNlciI6IjcwNWJjM2M2LTdmOTMtNDFkNi1iYzRjLTBhODdmODVlNDk3MyJ9.iMGvgHpErLkwCFB5vrG9smuWXBZFEqexwX4TM7ts3qJog14AOocKYLxGHKau8mlpCivzvpql3mLwS2--yKW6fA"
+// )
+//     .then((response: any) => {
+//         console.log(response);
+//     })
+//     .catch((error: any) => {
+//         if (error.response) {
+//             console.error(error.response);
+//         } else {
+//             console.error(error.message);
+//         }
+//     });
+
+// mySdk.domains.Domain(
+//     "f248d057-283c-43f4-8ba1-13ffc5514c07",
+//     "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJkb21haW4iOiJmMjQ4ZDA1Ny0yODNjLTQzZjQtOGJhMS0xM2ZmYzU1MTRjMDciLCJleHAiOjE3MTE0NzE4MDMsImlhdCI6MTcxMTQ2ODIwMywiaXNzIjoibWFnaXN0cmFsYS5hdXRoIiwic3ViIjoiNzA1YmMzYzYtN2Y5My00MWQ2LWJjNGMtMGE4N2Y4NWU0OTczIiwidHlwZSI6MCwidXNlciI6IjcwNWJjM2M2LTdmOTMtNDFkNi1iYzRjLTBhODdmODVlNDk3MyJ9.Gjhos0VCZiDoIYKsTF6iQAxUlU8CKUz2e6l007_ICI_X9_0t2LTG0G15qbQXsqZKzo4gAPgyuW8BYJKD7SlhuA"
+// )
+//     .then((response: any) => {
+//         console.log(response);
+//     })
+//     .catch((error: any) => {
+//         if (error.response) {
+//             console.error(error.response);
+//         } else {
+//             console.error(error.message);
+//         }
+//     });
+
+// mySdk.domains.DomainPermissions(
+//     "f248d057-283c-43f4-8ba1-13ffc5514c07",
+//     "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJkb21haW4iOiJmMjQ4ZDA1Ny0yODNjLTQzZjQtOGJhMS0xM2ZmYzU1MTRjMDciLCJleHAiOjE3MTE0NzE4MDMsImlhdCI6MTcxMTQ2ODIwMywiaXNzIjoibWFnaXN0cmFsYS5hdXRoIiwic3ViIjoiNzA1YmMzYzYtN2Y5My00MWQ2LWJjNGMtMGE4N2Y4NWU0OTczIiwidHlwZSI6MCwidXNlciI6IjcwNWJjM2M2LTdmOTMtNDFkNi1iYzRjLTBhODdmODVlNDk3MyJ9.Gjhos0VCZiDoIYKsTF6iQAxUlU8CKUz2e6l007_ICI_X9_0t2LTG0G15qbQXsqZKzo4gAPgyuW8BYJKD7SlhuA"
+// )
+//     .then((response: any) => {
+//         console.log(response);
+//     })
+//     .catch((error: any) => {
+//         if (error.response) {
+//             console.error(error.response);
+//         } else {
+//             console.error(error.message);
+//         }
+//     });
+
+// mySdk.domains.Domains(
+//     {offset: 0, limit: 10 },
+//     "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJkb21haW4iOiJmMjQ4ZDA1Ny0yODNjLTQzZjQtOGJhMS0xM2ZmYzU1MTRjMDciLCJleHAiOjE3MTE0NzE4MDMsImlhdCI6MTcxMTQ2ODIwMywiaXNzIjoibWFnaXN0cmFsYS5hdXRoIiwic3ViIjoiNzA1YmMzYzYtN2Y5My00MWQ2LWJjNGMtMGE4N2Y4NWU0OTczIiwidHlwZSI6MCwidXNlciI6IjcwNWJjM2M2LTdmOTMtNDFkNi1iYzRjLTBhODdmODVlNDk3MyJ9.Gjhos0VCZiDoIYKsTF6iQAxUlU8CKUz2e6l007_ICI_X9_0t2LTG0G15qbQXsqZKzo4gAPgyuW8BYJKD7SlhuA"
+// )
+//     .then((response: any) => {
+//         console.log(response);
+//     })
+//     .catch((error: any) => {
+//         if (error.response) {
+//             console.error(error.response);
+//         } else {
+//             console.error(error.message);
+//         }
+//     });
+
+// mySdk.domains.ListUserDomains(
+//     "65238590-d86c-4bce-b5e1-db1c984fde99",
+//     { "offset": 0, "limit": 10 },
+//     "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJkb21haW4iOiJmMjQ4ZDA1Ny0yODNjLTQzZjQtOGJhMS0xM2ZmYzU1MTRjMDciLCJleHAiOjE3MTE0NzE4MDMsImlhdCI6MTcxMTQ2ODIwMywiaXNzIjoibWFnaXN0cmFsYS5hdXRoIiwic3ViIjoiNzA1YmMzYzYtN2Y5My00MWQ2LWJjNGMtMGE4N2Y4NWU0OTczIiwidHlwZSI6MCwidXNlciI6IjcwNWJjM2M2LTdmOTMtNDFkNi1iYzRjLTBhODdmODVlNDk3MyJ9.Gjhos0VCZiDoIYKsTF6iQAxUlU8CKUz2e6l007_ICI_X9_0t2LTG0G15qbQXsqZKzo4gAPgyuW8BYJKD7SlhuA"
+// )
+//     .then((response: any) => {
+//         console.log(response);
+//     })
+//     .catch((error: any) => {
+//         if (error.response) {
+//             console.error(error.response);
+//         } else {
+//             console.error(error.message);
+//         }
+//     });
+
+// mySdk.domains.EnableDomain(
+//     "f248d057-283c-43f4-8ba1-13ffc5514c07",
+//     "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJkb21haW4iOiJmMjQ4ZDA1Ny0yODNjLTQzZjQtOGJhMS0xM2ZmYzU1MTRjMDciLCJleHAiOjE3MTE0NzE4MDMsImlhdCI6MTcxMTQ2ODIwMywiaXNzIjoibWFnaXN0cmFsYS5hdXRoIiwic3ViIjoiNzA1YmMzYzYtN2Y5My00MWQ2LWJjNGMtMGE4N2Y4NWU0OTczIiwidHlwZSI6MCwidXNlciI6IjcwNWJjM2M2LTdmOTMtNDFkNi1iYzRjLTBhODdmODVlNDk3MyJ9.Gjhos0VCZiDoIYKsTF6iQAxUlU8CKUz2e6l007_ICI_X9_0t2LTG0G15qbQXsqZKzo4gAPgyuW8BYJKD7SlhuA"
+// )
+//     .then((response: any) => {
+//         console.log(response);
+//     })
+//     .catch((error: any) => {
+//         if (error.response) {
+//             console.error(error.response);
+//         } else {
+//             console.error(error.message);
+//         }
+//     });
+
+// mySdk.domains.DisableDomain(
+//     "f248d057-283c-43f4-8ba1-13ffc5514c07",
+//     "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJkb21haW4iOiJmMjQ4ZDA1Ny0yODNjLTQzZjQtOGJhMS0xM2ZmYzU1MTRjMDciLCJleHAiOjE3MTE0NzE4MDMsImlhdCI6MTcxMTQ2ODIwMywiaXNzIjoibWFnaXN0cmFsYS5hdXRoIiwic3ViIjoiNzA1YmMzYzYtN2Y5My00MWQ2LWJjNGMtMGE4N2Y4NWU0OTczIiwidHlwZSI6MCwidXNlciI6IjcwNWJjM2M2LTdmOTMtNDFkNi1iYzRjLTBhODdmODVlNDk3MyJ9.Gjhos0VCZiDoIYKsTF6iQAxUlU8CKUz2e6l007_ICI_X9_0t2LTG0G15qbQXsqZKzo4gAPgyuW8BYJKD7SlhuA"
+// )
+//     .then((response: any) => {
+//         console.log(response);
+//     })
+//     .catch((error: any) => {
+//         if (error.response) {
+//             console.error(error.response);
+//         } else {
+//             console.error(error.message);
+//         }
+//     });
+
+// mySdk.domains.AddUsertoDomain(
+//     "f248d057-283c-43f4-8ba1-13ffc5514c07",
+//     { user_ids: ["02b5972d-9db4-425d-a3cd-2e2998217a50", "317cae8e-b15f-4393-8d5b-91587f4b0cdc"], relation: "admin" },
+//     "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJkb21haW4iOiJmMjQ4ZDA1Ny0yODNjLTQzZjQtOGJhMS0xM2ZmYzU1MTRjMDciLCJleHAiOjE3MTE0NzE4MDMsImlhdCI6MTcxMTQ2ODIwMywiaXNzIjoibWFnaXN0cmFsYS5hdXRoIiwic3ViIjoiNzA1YmMzYzYtN2Y5My00MWQ2LWJjNGMtMGE4N2Y4NWU0OTczIiwidHlwZSI6MCwidXNlciI6IjcwNWJjM2M2LTdmOTMtNDFkNi1iYzRjLTBhODdmODVlNDk3MyJ9.Gjhos0VCZiDoIYKsTF6iQAxUlU8CKUz2e6l007_ICI_X9_0t2LTG0G15qbQXsqZKzo4gAPgyuW8BYJKD7SlhuA"
+// )
+//     .then((response: any) => {
+//         console.log(response);
+//     })
+//     .catch((error: any) => {
+//         if (error.response) {
+//             console.error(error.response);
+//         } else {
+//             console.error(error.message);
+//         }
+//     });
+
+// mySdk.domains.RemoveUserfromDomain(
+//     "<domain_id>",
+//     { userIDs: ["<user_id>", "<user_id2>"], relation: "<role>" },
 //     "<token>"
 // )
 //     .then((response: any) => {

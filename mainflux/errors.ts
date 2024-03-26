@@ -20,6 +20,19 @@ interface UserErrors {
   resetpasswordrequest: ErrorDict;
 }
 
+interface DomainErrors {
+    create: ErrorDict;
+    domains: ErrorDict;
+    update: ErrorDict;
+    domain: ErrorDict;
+    permissions: ErrorDict;
+    listUserDomains: ErrorDict;
+    enable: ErrorDict;
+    disable: ErrorDict;
+    addUser: ErrorDict;
+    removeUser: ErrorDict;
+}
+
 export class Errors {
   private errors: ErrorDict = {
     400: "Failed due to malformed JSON.",
@@ -105,6 +118,53 @@ export class Errors {
       401: "Missing or invalid token provided.",
     },
   };
+
+  public domains: DomainErrors = {
+    create: {
+      401: "Missing or invalid access token provided.",
+      400: "Failed due to malformed JSON.",
+    },
+    domains: {
+      401: "Missing or invalid access token provided.",
+      404: "A non-existent entity request.",
+    },
+    update: {
+      401: "Missing or invalid access token provided.",
+      404: "Failed due to non existing domain.",
+      400: "Failed due to malformed JSON.",
+    },
+    domain: {
+      401: "Missing or invalid access token provided.",
+      404: "A non-existent entity request.",
+    },
+    permissions: {
+      401: "Missing or invalid access token provided.",
+      404: "Failed due to non existing domain.",
+    },
+    listUserDomains: {
+      401: "Missing or invalid access token provided.",
+      400: "Failed due to malformed query parameters.",
+    },
+    enable: {
+      401: "Missing or invalid access token provided.",
+      404: "Domain does not exist.",
+    },
+    disable: {
+      401: "Missing or invalid access token provided.",
+      404: "Domain does not exist.",
+    },
+    addUser: {
+      401: "Missing or invalid access token provided.",
+      404: "A non-existent entity request.",
+      400: "Failed due to malformed domain's ID.",
+    },
+    removeUser: {
+      401: "Missing or invalid access token provided.",
+      404: "A non-existent entity request.",
+      400: "Failed due to malformed domain's ID.",
+    },
+  };
+
 
   //     groups= {
   //         get : {

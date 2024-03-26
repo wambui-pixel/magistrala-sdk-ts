@@ -1,4 +1,5 @@
 import Users from "./users";
+import Domains from "./domains";
 // const Things = require("./things");
 // const Groups = require("./groups");
 // const Channels = require("./channels");
@@ -10,6 +11,7 @@ const defaultUrl = "http://localhost";
 
 interface SDKConfig {
   usersUrl?: string;
+  domainsUrl?: string;
   // thingsUrl?: string;
   // groupsUrl?: string;
   // channelsUrl?: string;
@@ -21,6 +23,7 @@ interface SDKConfig {
 
 class SDK {
   users: Users;
+  domains: Domains;
   // things: Things;
   // groups: Groups;
   // channels: Channels;
@@ -30,6 +33,7 @@ class SDK {
 
   constructor({
     usersUrl = defaultUrl,
+    domainsUrl = defaultUrl,
     // thingsUrl = defaultUrl,
     // groupsUrl = defaultUrl,
     // channelsUrl = defaultUrl,
@@ -39,6 +43,7 @@ class SDK {
     // httpadapterUrl = defaultUrl,
   }: SDKConfig = {}) {
     this.users = new Users(usersUrl);
+    this.domains = new Domains(domainsUrl);
     // this.things = new Things(thingsUrl);
     // this.groups = new Groups(groupsUrl);
     // this.channels = new Channels(channelsUrl);
