@@ -21,18 +21,43 @@ interface UserErrors {
 }
 
 interface DomainErrors {
-    create: ErrorDict;
-    domains: ErrorDict;
-    update: ErrorDict;
-    domain: ErrorDict;
-    permissions: ErrorDict;
-    listUserDomains: ErrorDict;
-    enable: ErrorDict;
-    disable: ErrorDict;
-    addUser: ErrorDict;
-    removeUser: ErrorDict;
+  create: ErrorDict;
+  domains: ErrorDict;
+  update: ErrorDict;
+  domain: ErrorDict;
+  permissions: ErrorDict;
+  listUserDomains: ErrorDict;
+  enable: ErrorDict;
+  disable: ErrorDict;
+  addUser: ErrorDict;
+  removeUser: ErrorDict;
+}
+interface ThingErrors {
+  create: ErrorDict;
+  createbulk: ErrorDict;
+  getbychannel: ErrorDict;
+  disable: ErrorDict;
+  connect: ErrorDict;
+  disconnect: ErrorDict;
+  update: ErrorDict;
+  updatethingsecret: ErrorDict;
+  updatethingtags: ErrorDict;
+  updatethingowner: ErrorDict;
+  connects: ErrorDict;
+  identifything: ErrorDict;
+  get: ErrorDict;
+  getall: ErrorDict;
 }
 
+interface ChannelErrors {
+  create: ErrorDict;
+  get: ErrorDict;
+  getall: ErrorDict;
+  createbulk: ErrorDict;
+  getbything: ErrorDict;
+  update: ErrorDict;
+  disable: ErrorDict;
+}
 export class Errors {
   private errors: ErrorDict = {
     400: "Failed due to malformed JSON.",
@@ -165,7 +190,6 @@ export class Errors {
     },
   };
 
-
   //     groups= {
   //         get : {
   //             401: "Missing or invalid access token provided.",
@@ -209,71 +233,71 @@ export class Errors {
 
   //     }
 
-  //     things ={
-  //         create : {
-  //             500: "Unexpected server-side error occurred.",
-  //             401: "Missing or invalid access token provided.",
-  //         },
-  //         createbulk : {
-  //             500: "Unexpected server-side error occurred.",
-  //             400: "Failed due to malformed JSON.",
-  //             401: "Missing or invalid access token provided.",
-  //             },
-  //         getbychannel : {
-  //             401: "Missing or invalid access token provided.",
-  //             400: "Failed due to malformed query parameters.",
-  //             },
-  //         disable : {
-  //             500: "Unexpected server-side error occurred.",
-  //             400: "Failed due to malformed JSON.",
-  //             401: "Missing or invalid access token provided.",
-  //             },
-  //         connect : {
-  //             400: "Failed due to malformed JSON.",
-  //             401: "Missing or invalid access token provided.",
-  //             },
-  //         disconnect : {
-  //             400: "Failed due to malformed JSON.",
-  //             401: "Missing or invalid access token provided.",
-  //             },
-  //         update : {
-  //             500: "Unexpected server-side error occurred.",
-  //             401: "Missing or invalid access token provided.",
-  //             400: "Failed due to malformed JSON.",
-  //             404: "Failed due to a non-existing thing.",
-  //         },
-  //         updatethingsecret : {
-  //             409: "Entity already exists.",
-  //             401: "Missing or invalid access token provided.",
-  //             400: "Failed due to malformed JSON.",
-  //             404: "Failed due to a non-existing thing.",
-  //             },
-  //         updatethingtags : {
-  //             500: "Unexpected server-side error occurred.",
-  //             404: "Failed due to a non-existing thing.",
-  //         },
-  //         updatethingowner : {
-  //             500: "Unexpected server-side error occurred.",
-  //             404: "Failed due to a non-existing thing.",
-  //         },
-  //         connects : {
-  //             500: "Unexpected server-side error occurred.",
-  //             401: "Missing or invalid access token provided.",
-  //             400: "Failed due to malformed JSON.",
-  //         },
-  //         identifything : {
-  //             404: "A non-existent entity request.",
-  //             415: "Missing or invalid content type.",
-  //         },
-  //         get :{
-  //             401: "Missing or invalid access token provided.",
-  //         },
-  //         getall :{
-  //             500: "Unexpected server-side error occurred.",
-  //             400: "Failed due to malformed query parameters.",
-  //             401: "Missing or invalid access token provided.",
-  //         },
-  //     }
+  public things: ThingErrors = {
+    create: {
+      500: "Unexpected server-side error occurred.",
+      401: "Missing or invalid access token provided.",
+    },
+    createbulk: {
+      500: "Unexpected server-side error occurred.",
+      400: "Failed due to malformed JSON.",
+      401: "Missing or invalid access token provided.",
+    },
+    getbychannel: {
+      401: "Missing or invalid access token provided.",
+      400: "Failed due to malformed query parameters.",
+    },
+    disable: {
+      500: "Unexpected server-side error occurred.",
+      400: "Failed due to malformed JSON.",
+      401: "Missing or invalid access token provided.",
+    },
+    connect: {
+      400: "Failed due to malformed JSON.",
+      401: "Missing or invalid access token provided.",
+    },
+    disconnect: {
+      400: "Failed due to malformed JSON.",
+      401: "Missing or invalid access token provided.",
+    },
+    update: {
+      500: "Unexpected server-side error occurred.",
+      401: "Missing or invalid access token provided.",
+      400: "Failed due to malformed JSON.",
+      404: "Failed due to a non-existing thing.",
+    },
+    updatethingsecret: {
+      409: "Entity already exists.",
+      401: "Missing or invalid access token provided.",
+      400: "Failed due to malformed JSON.",
+      404: "Failed due to a non-existing thing.",
+    },
+    updatethingtags: {
+      500: "Unexpected server-side error occurred.",
+      404: "Failed due to a non-existing thing.",
+    },
+    updatethingowner: {
+      500: "Unexpected server-side error occurred.",
+      404: "Failed due to a non-existing thing.",
+    },
+    connects: {
+      500: "Unexpected server-side error occurred.",
+      401: "Missing or invalid access token provided.",
+      400: "Failed due to malformed JSON.",
+    },
+    identifything: {
+      404: "A non-existent entity request.",
+      415: "Missing or invalid content type.",
+    },
+    get: {
+      401: "Missing or invalid access token provided.",
+    },
+    getall: {
+      500: "Unexpected server-side error occurred.",
+      400: "Failed due to malformed query parameters.",
+      401: "Missing or invalid access token provided.",
+    },
+  };
 
   //     certs ={
   //         issue : {

@@ -6,9 +6,9 @@ const defaultUrl = "http://localhost";
 const mySdk = new SDK({
   usersUrl: defaultUrl + ":9002",
   domainsUrl: defaultUrl + ":8189",
+  thingsUrl: defaultUrl + ":9000",
+  channelsUrl: defaultUrl + ":9000",
   //     groupsUrl: defaultUrl + ":9002",
-  //     thingsUrl: defaultUrl + ":9000",
-  //     channelsUrl: defaultUrl + ":9000",
   //     httpadapterUrl: defaultUrl,
   //     readersUrl: defaultUrl + ":9011",
   //     certsUrl: defaultUrl + ":9019",

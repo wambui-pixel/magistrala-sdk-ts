@@ -1,8 +1,8 @@
 import Users from "./users";
 import Domains from "./domains";
-// const Things = require("./things");
+import Things from ("./things");
+import Channels from ("./channels");
 // const Groups = require("./groups");
-// const Channels = require("./channels");
 // const Certs = require("./certs");
 // const Bootstrap = require("./bootstrap");
 // const Messages = require("./messages");
@@ -12,9 +12,9 @@ const defaultUrl = "http://localhost";
 interface SDKConfig {
   usersUrl?: string;
   domainsUrl?: string;
-  // thingsUrl?: string;
+  thingsUrl?: string;
+  channelsUrl?: string;
   // groupsUrl?: string;
-  // channelsUrl?: string;
   // certsUrl?: string;
   // bootstrapsUrl?: string;
   // readersUrl?: string;
@@ -24,9 +24,9 @@ interface SDKConfig {
 class SDK {
   users: Users;
   domains: Domains;
-  // things: Things;
+  things: Things;
+  channels: Channels;
   // groups: Groups;
-  // channels: Channels;
   // certs: Certs;
   // bootstrap: Bootstrap;
   // messages: Messages;
@@ -34,9 +34,10 @@ class SDK {
   constructor({
     usersUrl = defaultUrl,
     domainsUrl = defaultUrl,
-    // thingsUrl = defaultUrl,
+    thingsUrl = defaultUrl,
+    channelsUrl = defaultUrl,
     // groupsUrl = defaultUrl,
-    // channelsUrl = defaultUrl,
+    
     // certsUrl = defaultUrl,
     // bootstrapsUrl = defaultUrl,
     // readersUrl = defaultUrl,
