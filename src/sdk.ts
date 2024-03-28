@@ -1,20 +1,20 @@
-import Users from './users'
-import Domains from './domains'
-// const Things = require("./things");
-// const Groups = require("./groups");
-// const Channels = require("./channels");
+import Users from "./users";
+import Domains from "./domains";
+import Things from "./things";
+// const Groups = require("./groups")
+import Channels from "./channels";
 // const Certs = require("./certs");
 // const Bootstrap = require("./bootstrap");
 // const Messages = require("./messages");
 
-const defaultUrl = 'http://localhost'
+const defaultUrl = "http://localhost";
 
 interface SDKConfig {
-  usersUrl?: string
-  domainsUrl?: string
-  // thingsUrl?: string;
+  usersUrl?: string;
+  domainsUrl?: string;
+  thingsUrl?: string;
   // groupsUrl?: string;
-  // channelsUrl?: string;
+  channelsUrl?: string;
   // certsUrl?: string;
   // bootstrapsUrl?: string;
   // readersUrl?: string;
@@ -22,38 +22,38 @@ interface SDKConfig {
 }
 
 class SDK {
-  users: Users
-  domains: Domains
-  // things: Things;
+  users: Users;
+  domains: Domains;
+  things: Things;
   // groups: Groups;
-  // channels: Channels;
+  channels: Channels;
   // certs: Certs;
   // bootstrap: Bootstrap;
   // messages: Messages;
 
-  constructor ({
+  constructor({
     usersUrl = defaultUrl,
-    domainsUrl = defaultUrl
-    // thingsUrl = defaultUrl,
+    domainsUrl = defaultUrl,
+    thingsUrl = defaultUrl,
     // groupsUrl = defaultUrl,
-    // channelsUrl = defaultUrl,
+    channelsUrl = defaultUrl,
     // certsUrl = defaultUrl,
     // bootstrapsUrl = defaultUrl,
     // readersUrl = defaultUrl,
     // httpadapterUrl = defaultUrl,
   }: SDKConfig = {}) {
-    this.users = new Users(usersUrl)
-    this.domains = new Domains(domainsUrl)
-    // this.things = new Things(thingsUrl);
-    // this.groups = new Groups(groupsUrl);
-    // this.channels = new Channels(channelsUrl);
+    this.users = new Users(usersUrl);
+    this.domains = new Domains(domainsUrl);
+    this.things = new Things(thingsUrl);
+    //this.groups = new Groups(groupsUrl);
+    this.channels = new Channels(channelsUrl);
     // this.certs = new Certs(certsUrl);
     // this.bootstrap = new Bootstrap(bootstrapsUrl);
     // this.messages = new Messages(readersUrl, httpadapterUrl);
   }
 }
 
-export default SDK
+export default SDK;
 
 // module.exports = SDK;
 // Export the SDK class for use in a web browser
