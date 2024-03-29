@@ -2,7 +2,7 @@ import Users from "./users";
 import Domains from "./domains";
 import Things from "./things";
 // const Groups = require("./groups")
-import Channels from "./channels";
+//import Channels from './channels'
 // const Certs = require("./certs");
 // const Bootstrap = require("./bootstrap");
 // const Messages = require("./messages");
@@ -14,7 +14,7 @@ interface SDKConfig {
   domainsUrl?: string;
   thingsUrl?: string;
   // groupsUrl?: string;
-  channelsUrl?: string;
+  // channelsUrl?: string
   // certsUrl?: string;
   // bootstrapsUrl?: string;
   // readersUrl?: string;
@@ -26,7 +26,7 @@ class SDK {
   domains: Domains;
   things: Things;
   // groups: Groups;
-  channels: Channels;
+  //channels: Channels;
   // certs: Certs;
   // bootstrap: Bootstrap;
   // messages: Messages;
@@ -36,7 +36,7 @@ class SDK {
     domainsUrl = defaultUrl,
     thingsUrl = defaultUrl,
     // groupsUrl = defaultUrl,
-    channelsUrl = defaultUrl,
+    //channelsUrl = defaultUrl,
     // certsUrl = defaultUrl,
     // bootstrapsUrl = defaultUrl,
     // readersUrl = defaultUrl,
@@ -45,8 +45,8 @@ class SDK {
     this.users = new Users(usersUrl);
     this.domains = new Domains(domainsUrl);
     this.things = new Things(thingsUrl);
-    //this.groups = new Groups(groupsUrl);
-    this.channels = new Channels(channelsUrl);
+    // this.groups = new Groups(groupsUrl);
+    //this.channels = new Channels(channelsUrl);
     // this.certs = new Certs(certsUrl);
     // this.bootstrap = new Bootstrap(bootstrapsUrl);
     // this.messages = new Messages(readersUrl, httpadapterUrl);
