@@ -197,6 +197,7 @@ export interface Invitation {
   invited_by: string | UserBasicInfo;
   invitee_user_id: string | UserBasicInfo;
   domain_id: string | DomainBasicInfo;
+  domain_name?: string;
   role_id?: string;
   role_name?: string;
   actions?: string[];
