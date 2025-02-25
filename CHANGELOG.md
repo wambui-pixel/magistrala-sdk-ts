@@ -1,5 +1,11 @@
 # @absmach/magistrala-sdk
 
+## 0.10.15
+
+### Patch Changes
+
+- 1b9339f: add root_group param to page metadata
+
 ## 0.10.14
 
 ### Patch Changes
