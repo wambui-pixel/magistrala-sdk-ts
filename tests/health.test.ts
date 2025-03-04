@@ -121,6 +121,15 @@ describe("Health", () => {
     instance_id: "0b375343-1273-4efc-96a3-517ca74ec4c1",
   };
 
+  const authServiceHealthInfo: HealthInfo = {
+    status: "pass",
+    version: "v0.14.0",
+    commit: "c3e7159cb762396f064d43d55c30d90011c9357f",
+    description: "auth service",
+    build_time: "2024-07-25_14:20:35",
+    instance_id: "0b375343-1273-4efc-96a3-517ca74ec4c1",
+  };
+
   beforeEach(() => {
     fetchMock.resetMocks();
   });
@@ -200,5 +209,12 @@ describe("Health", () => {
 
     const response = await sdk.Health.Health("groups");
     expect(response).toEqual(groupsServiceHealthInfo);
+  });
+
+  test("fetch auth service health information", async () => {
+    fetchMock.mockResponseOnce(JSON.stringify(authServiceHealthInfo));
+
+    const response = await sdk.Health.Health("pats");
+    expect(response).toEqual(authServiceHealthInfo);
   });
 });

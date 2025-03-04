@@ -512,12 +512,55 @@ export interface ClientTelemetry {
 }
 
 export interface InvitationPageMeta extends BasicPageMeta {
-  offset: number;
-  limit: number;
   invited_by?: string;
   invitee_user_id?: string;
   domain_id?: string;
   role_id?: string;
   invited_by_or_user_id?: string;
   state?: string;
+}
+
+export type EntityType = "groups" | "channels" | "clients" | "domains" | "users" | "dashboards" | "messages";
+
+export type Operation = "create" | "read" | "list" | "update" | "delete" | "share" | "unshare" | "publish" | "subscribe";
+export interface Scope {
+  id?: string,
+  pat_id?: string,
+  entity_type?: EntityType,
+  optional_domain_id?: string,
+  operation?: Operation,
+  entity_id?: string
+}
+
+export interface PAT {
+  id: string
+  user: string
+  name?: string
+  description?: string
+  secret?: string
+  scope?: Scope[]
+  issued_at?: Date
+  expires_at?: Date
+  updated_at?: Date
+  last_used_at?: Date
+  revoked?: boolean
+  revoked_at?: Date
+}
+
+export interface PATsPage {
+  pats: PAT[];
+  total: number;
+  offset: number;
+  limit: number;
+}
+
+export interface ScopesPage {
+  scopes: Scope[];
+  total: number;
+  offset: number;
+  limit: number;
+}
+export interface ScopesPageMeta extends BasicPageMeta {
+  pat_id?: string;
+  id?: string;
 }

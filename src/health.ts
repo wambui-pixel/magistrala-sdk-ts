@@ -27,6 +27,8 @@ export default class Health {
 
   private readonly groupsUrl?: URL;
 
+  private readonly authUrl?: URL;
+
   private readonly healthEndpoint: string;
 
   public constructor({
@@ -41,6 +43,7 @@ export default class Health {
     invitationsUrl,
     domainsUrl,
     groupsUrl,
+    authUrl,
   }: {
     usersUrl?: string;
     clientsUrl?: string;
@@ -53,6 +56,7 @@ export default class Health {
     invitationsUrl?: string;
     domainsUrl?: string;
     groupsUrl?: string;
+    authUrl?: string;
   }) {
     if (usersUrl !== undefined) {
       this.usersUrl = new URL(usersUrl);
@@ -86,6 +90,9 @@ export default class Health {
     }
     if (groupsUrl !== undefined) {
       this.groupsUrl = new URL(groupsUrl);
+    }
+    if (authUrl !== undefined) {
+      this.authUrl = new URL(authUrl);
     }
     this.healthEndpoint = "health";
   }
@@ -135,6 +142,10 @@ export default class Health {
       }
       case "groups": {
         url = this.groupsUrl;
+        break;
+      }
+      case "pats": {
+        url = this.authUrl;
         break;
       }
       default: {
