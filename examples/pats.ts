@@ -115,7 +115,7 @@ mySdk.PATs.ListScopes(patId, { offset: 0, limit: 10 }, token)
     console.error(error);
   });
 
-mySdk.PATs.DeleteScopes(patId, ["<scopeId"], token)
+mySdk.PATs.DeleteScopes(patId, ["<scopeId>"], token)
   .then((response: any) => {
     console.log("response: ", response);
   })
