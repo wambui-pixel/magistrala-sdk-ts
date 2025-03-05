@@ -1,5 +1,5 @@
 ---
-"@absmach/magistrala-sdk": patch
+"@absmach/magistrala-sdk": minor
 ---
 
 add pats

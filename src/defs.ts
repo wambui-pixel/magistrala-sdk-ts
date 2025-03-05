@@ -533,8 +533,8 @@ export interface Scope {
 }
 
 export interface PAT {
-  id: string
-  user: string
+  id?: string
+  user?: string
   name?: string
   description?: string
   secret?: string

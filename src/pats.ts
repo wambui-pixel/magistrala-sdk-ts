@@ -31,7 +31,7 @@ export default class PATs {
   /**
    * @method CreatePAT - Creates a new Personal Access Token (PAT).
    * @param {string} name -  The name of the PAT.
-   * @param {string} duration - The validity duration of the PAT (e.g., "24h", "7d").
+   * @param {string} duration - The validity duration of the PAT (e.g., "24h").
    * @param {string} description - The description of the PAT.
    * @param {string} token - Authorization token.
    * @returns {Promise<PAT>} PAT - The created PAT object.
@@ -53,7 +53,6 @@ export default class PATs {
         new URL(this.patsEndpoint, this.authUrl).toString(),
         options
       );
-      console.log("url", response.url);
       if (!response.ok) {
         const errorRes = await response.json();
         throw Errors.HandleError(errorRes.message, response.status);
@@ -132,7 +131,6 @@ export default class PATs {
         ).toString(),
         options
       );
-      console.log("url", response.url);
       if (!response.ok) {
         const errorRes = await response.json();
         throw Errors.HandleError(errorRes.message, response.status);
@@ -154,7 +152,7 @@ export default class PATs {
     token: string
   ) {
     const options: RequestInit = {
-      method: "Delete",
+      method: "DELETE",
       headers: {
         "Content-Type": this.contentType,
         Authorization: `Bearer ${token}`,
@@ -263,7 +261,7 @@ export default class PATs {
    */
   public async DeletePAT(patId: string, token: string) {
     const options: RequestInit = {
-      method: "Delete",
+      method: "DELETE",
       headers: {
         "Content-Type": this.contentType,
         Authorization: `Bearer ${token}`,
@@ -369,6 +367,7 @@ export default class PATs {
 
   /**
    * @method AddScope - Retrieves a PAT by its ID.
+   * @param {Scope[]} scopes - An array of scope.
    * @param {string} patId - The unique ID of the PAT.
    * @param {string} token - Authorization token.
    * @returns {Promise<PAT>} PAT - The requested PAT object.
@@ -383,7 +382,6 @@ export default class PATs {
       },
       body: JSON.stringify({ scopes }),
     };
-    console.log("scope", options.body);
     try {
       const response = await fetch(
         new URL(
@@ -392,7 +390,6 @@ export default class PATs {
         ).toString(),
         options
       );
-      console.log("url", response.url);
       if (!response.ok) {
         const errorRes = await response.json();
         throw Errors.HandleError(errorRes.message, response.status);
@@ -413,7 +410,7 @@ export default class PATs {
    * @param {ScopesPageMeta} queryParams - Metadata for pagination or filters.
    * @param {string} token - Authorization token.
    * @returns {Promise<ScopesPage>} ScopesPage - A page of scopes.
-   * @throws {Error} - If the scoped cannot be fetched.
+   * @throws {Error} - If the scopes cannot be fetched.
    */
   public async ListScopes(
     patId: string,
@@ -453,14 +450,14 @@ export default class PATs {
   }
 
   /**
-   * @method RemoveScope - Removes a scope from a PAT.
+   * @method DeleteScopes - Removes a scope from a PAT.
    * @param {string} patId - The unique ID of the PAT.
    * @param {string[]} scopeIds - Array of scope IDs to remove.
    * @param {string} token - Authorization token.
-   * @returns {Promise<Response>} response - A promise that resolves when the scope is removed.
+   * @returns {Promise<Response>} response - A promise that resolves when the scopes are removed.
    * @throws {Error} - If the scopes cannot be removed.
    */
-  public async RemoveScope(patId: string, scopeIds: string[], token: string) {
+  public async DeleteScopes(patId: string, scopeIds: string[], token: string) {
     const options: RequestInit = {
       method: "PATCH",
       headers: {
@@ -478,14 +475,13 @@ export default class PATs {
         ).toString(),
         options
       );
-      console.log("url", response.url);
       if (!response.ok) {
         const errorRes = await response.json();
         throw Errors.HandleError(errorRes.message, response.status);
       }
       const removeScopeResponse: Response = {
         status: response.status,
-        message: "Scope removed successfully",
+        message: "Scopes removed successfully",
       };
       return removeScopeResponse;
     } catch (error) {
@@ -494,18 +490,18 @@ export default class PATs {
   }
 
   /**
-   * @method DeleteScopes - Deletes all scopes associated with a PAT.
+   * @method DeleteAllScopes - Deletes all scopes associated with a PAT.
    * @param {string} patId - The unique ID of the PAT.
    * @param {string} token - Authorization token.
    * @returns {Promise<Response>} response - A promise that resolves when the scopes are deleted.
    * @throws {Error} - If the scoped cannot be deleted.
    */
-  public async DeleteScopes(
+  public async DeleteAllScopes(
     patId: string,
     token: string
   ) {
     const options: RequestInit = {
-      method: "Delete",
+      method: "DELETE",
       headers: {
         "Content-Type": this.contentType,
         Authorization: `Bearer ${token}`,

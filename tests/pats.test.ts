@@ -150,25 +150,25 @@ describe("PATs", () => {
     expect(response).toEqual(scopesPage);
   });
 
-  test("RemoveScope should remove a scope from a PAT", async () => {
+  test("DeleteScopes should remove a scope from a PAT", async () => {
     const successResponse = {
       status: 200,
-      message: "Scope removed successfully",
+      message: "Scopes removed successfully",
     };
     fetchMock.mockResponseOnce(JSON.stringify(successResponse));
 
-    const response = await sdk.PATs.RemoveScope(patId, scopeIds, token);
+    const response = await sdk.PATs.DeleteScopes(patId, scopeIds, token);
     expect(response).toEqual(successResponse);
   });
 
-  test("DeleteScopes should delete all scope from a PAT", async () => {
+  test("DeleteAllScopes should delete all scope from a PAT", async () => {
     const successResponse = {
       status: 200,
       message: "All scopes deleted successfully",
     };
     fetchMock.mockResponseOnce(JSON.stringify(successResponse));
 
-    const response = await sdk.PATs.DeleteScopes(patId, token);
+    const response = await sdk.PATs.DeleteAllScopes(patId, token);
     expect(response).toEqual(successResponse);
   });
 });
