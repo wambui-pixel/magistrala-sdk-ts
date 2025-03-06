@@ -108,13 +108,13 @@ export default class PATs {
   }
 
   /**
-   * @method PAT - Retrieves a Personal Access Token (PAT) by its ID.
+   * @method ViewPAT - Retrieves a Personal Access Token (PAT) by its ID.
    * @param {string} patId - The unique ID of the PAT.
    * @param {string} token - Authorization token.
    * @returns {Promise<PAT>} PAT - The requested PAT object.
    * @throws {Error} - If the PAT cannot be fetched.
    */
-  public async PAT(patId: string, token: string): Promise<PAT> {
+  public async ViewPAT(patId: string, token: string): Promise<PAT> {
     const options: RequestInit = {
       method: "GET",
       headers: {
@@ -366,7 +366,7 @@ export default class PATs {
   }
 
   /**
-   * @method AddScope - Retrieves a PAT by its ID.
+   * @method AddScope - Adds scopes to a PAT.
    * @param {Scope[]} scopes - An array of scope.
    * @param {string} patId - The unique ID of the PAT.
    * @param {string} token - Authorization token.

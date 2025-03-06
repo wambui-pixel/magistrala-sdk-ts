@@ -71,10 +71,10 @@ describe("PATs", () => {
     expect(response).toEqual(patsPage);
   });
 
-  test("PAT should return a PAT", async () => {
+  test("ViewPAT should return a PAT", async () => {
     fetchMock.mockResponseOnce(JSON.stringify(pat));
 
-    const response = await sdk.PATs.PAT(patId, token);
+    const response = await sdk.PATs.ViewPAT(patId, token);
     expect(response).toEqual(pat);
   });
 

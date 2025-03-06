@@ -41,7 +41,7 @@ mySdk.PATs.DeleteAllPATs(token)
     console.error(error);
   });
 
-mySdk.PATs.PAT(patId, token)
+mySdk.PATs.ViewPAT(patId, token)
   .then((response: any) => {
     console.log("response: ", response);
   })
