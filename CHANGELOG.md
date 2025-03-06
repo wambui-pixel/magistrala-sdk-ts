@@ -1,5 +1,11 @@
 # @absmach/magistrala-sdk
 
+## 0.11.0
+
+### Minor Changes
+
+- 9d526b6: add pats
+
 ## 0.10.15
 
 ### Patch Changes
