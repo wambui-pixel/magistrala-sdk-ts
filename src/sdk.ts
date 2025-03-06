@@ -12,6 +12,7 @@ import Journal from "./journal";
 import Health from "./health";
 import Clients from "./clients";
 import Rules from "./re";
+import PATs from "./pats";
 
 export type {
   User,
@@ -71,6 +72,13 @@ export type {
   Rule,
   RulesPageMetadata,
   RulesPage,
+  EntityType,
+  Operation,
+  Scope,
+  PAT,
+  PATsPage,
+  ScopesPage,
+  ScopesPageMeta,
 } from "./defs";
 
 const defaultUrl = "http://localhost";
@@ -87,6 +95,7 @@ export interface SDKConfig {
   bootstrapUrl?: string;
   journalUrl?: string;
   rulesUrl?: string;
+  authUrl?: string;
 }
 
 class SDK {
@@ -112,6 +121,8 @@ class SDK {
 
   Rules: Rules;
 
+  PATs: PATs;
+
   constructor({
     usersUrl = defaultUrl,
     channelsUrl = defaultUrl,
@@ -124,6 +135,7 @@ class SDK {
     bootstrapUrl = defaultUrl,
     journalUrl = defaultUrl,
     rulesUrl = defaultUrl,
+    authUrl = defaultUrl,
   }: SDKConfig = {}) {
     this.users = new Users({ usersUrl, clientsUrl });
     this.domains = new Domains({ domainsUrl });
@@ -145,8 +157,10 @@ class SDK {
       journalUrl,
       domainsUrl,
       groupsUrl,
+      authUrl,
     });
     this.Rules = new Rules({ rulesUrl });
+    this.PATs = new PATs(authUrl);
   }
 }
 
