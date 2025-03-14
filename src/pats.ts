@@ -1,7 +1,7 @@
 // Copyright (c) Abstract Machines
 // SPDX-License-Identifier: Apache-2.0
 
-import { PageMetadata, PAT, PATsPage, Response, Scope, ScopesPage, ScopesPageMeta } from "./defs";
+import { PAT, PatPageMeta, PATsPage, Response, Scope, ScopesPage, ScopesPageMeta } from "./defs";
 import Errors from "./errors";
 
 /**
@@ -66,13 +66,13 @@ export default class PATs {
 
   /**
    * @method ListPATS - Retrieves all Personal Access Tokens (PATs) matching the provided query parameters.
-   * @param {PageMetadata} queryParams - Metadata for pagination or filters.
+   * @param {PatPageMeta} queryParams - Metadata for pagination or filters.
    * @param {string} token - Authorization token.
    * @returns {Promise<PATsPage>} PATsPage - A page of PATs.
    * @throws {Error} - If the PATs cannot be fetched.
    */
   public async ListPATS(
-    queryParams: PageMetadata,
+    queryParams: PatPageMeta,
     token: string
   ): Promise<PATsPage> {
     const stringParams: Record<string, string> = Object.fromEntries(
