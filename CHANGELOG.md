@@ -1,5 +1,11 @@
 # @absmach/magistrala-sdk
 
+## 0.11.2
+
+### Patch Changes
+
+- 155ac0c: Export Page Meta interface
+
 ## 0.11.1
 
 ### Patch Changes
