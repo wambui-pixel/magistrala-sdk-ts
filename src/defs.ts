@@ -532,6 +532,7 @@ export interface Scope {
   entity_id?: string
 }
 
+export type PatStatus = "active" | "revoked" | "expired" | "all";
 export interface PAT {
   id?: string
   user?: string
@@ -539,6 +540,7 @@ export interface PAT {
   description?: string
   secret?: string
   scope?: Scope[]
+  status?: PatStatus
   issued_at?: Date
   expires_at?: Date
   updated_at?: Date
@@ -560,8 +562,6 @@ export interface ScopesPage {
   offset: number;
   limit: number;
 }
-
-export type PatStatus = "active" | "revoked" | "expired" | "all";
 
 export interface PatPageMeta extends BasicPageMeta {
   status?: PatStatus;
