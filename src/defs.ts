@@ -565,6 +565,8 @@ export type PatStatus = "active" | "revoked" | "expired" | "all";
 
 export interface PatPageMeta extends BasicPageMeta {
   status?: PatStatus;
+  name?: string;
+  id?: string;
 }
 export interface ScopesPageMeta extends BasicPageMeta {
   pat_id?: string;
