@@ -79,6 +79,8 @@ export type {
   PATsPage,
   ScopesPage,
   ScopesPageMeta,
+  PatPageMeta,
+  PatStatus
 } from "./defs";
 
 const defaultUrl = "http://localhost";
