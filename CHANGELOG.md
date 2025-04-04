@@ -1,5 +1,11 @@
 # @absmach/magistrala-sdk
 
+## 0.11.8
+
+### Patch Changes
+
+- 861f736: update send message extraction of sub topic to support multiple subtopics
+
 ## 0.11.7
 
 ### Patch Changes
