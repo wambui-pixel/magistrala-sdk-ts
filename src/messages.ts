@@ -39,27 +39,23 @@ export default class Messages {
   }
 
   /**
-  * @method Send- Sends message to a given Channel via HTTP adapter. The client and Channel must exist and the client connected to the Channel.
-  * @param {string} channelId - The ID of the Channel to send the message to.
-  * @param {string} msg - Message to send to the Channel that should be in encoded into
-  *       bytes format for example:
-  *       [{"bn":"demo", "bu":"V", "n":"voltage", "u":"V", "v":5}]
-  * @param {string} clientKey - The secret of the client sending the message.
-  * @returns {Promise<Response>} response - A promise that resolves when the message is sent.
-  * @throws {Error} - If the message cannot be sent.
-  */
+   * @method Send- Sends message to a given Channel via HTTP adapter. The client and Channel must exist and the client connected to the Channel.
+   * @param {string} channelId - The ID of the Channel to send the message to.
+   * @param {string} msg - Message to send to the Channel that should be in encoded into
+   *       bytes format for example:
+   *       [{"bn":"demo", "bu":"V", "n":"voltage", "u":"V", "v":5}]
+   * @param {string} clientKey - The secret of the client sending the message.
+   * @returns {Promise<Response>} response - A promise that resolves when the message is sent.
+   * @throws {Error} - If the message cannot be sent.
+   */
   public async Send(
     channelId: string,
     msg: string,
     clientKey: string
   ): Promise<Response> {
-    const chanNameParts = channelId.split(".", 2);
-    const chanId = chanNameParts[0];
-    let subtopic = "";
-
-    if (chanNameParts.length === 2) {
-      subtopic = chanNameParts[1].replace(".", "/");
-    }
+    const chanNameParts = channelId.split(".");
+    const chanId = chanNameParts.shift()!;
+    const subtopic = chanNameParts.join("/");
 
     const options: RequestInit = {
       method: "POST",
@@ -71,10 +67,7 @@ export default class Messages {
     };
     try {
       const response = await fetch(
-        new URL(
-          `c/${chanId}/m/${subtopic}`,
-          this.httpAdapterUrl
-        ).toString(),
+        new URL(`c/${chanId}/m/${subtopic}`, this.httpAdapterUrl).toString(),
         options
       );
       if (!response.ok) {
@@ -92,15 +85,15 @@ export default class Messages {
   }
 
   /**
-  *
-  * @method Read - Read messages from a given channel.
-  * @param {MessagesPageMetadata} queryParams - Query parameters for the request.
-  * @param {string} channelId - The ID of the channel to read the message from.
-  * @param {string} token - Authorization token.
-  * @param {string} domainId - The unique ID of the domain.
-  * @returns {Promise<MessagesPage>} messagesPage - A page of messages.
-  * @throws {Error} - If the messages cannot be fetched.
-  */
+   *
+   * @method Read - Read messages from a given channel.
+   * @param {MessagesPageMetadata} queryParams - Query parameters for the request.
+   * @param {string} channelId - The ID of the channel to read the message from.
+   * @param {string} token - Authorization token.
+   * @param {string} domainId - The unique ID of the domain.
+   * @returns {Promise<MessagesPage>} messagesPage - A page of messages.
+   * @throws {Error} - If the messages cannot be fetched.
+   */
   public async Read(
     pm: MessagesPageMetadata,
     channelId: string,
