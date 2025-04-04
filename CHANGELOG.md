@@ -1,5 +1,11 @@
 # @absmach/magistrala-sdk
 
+## 0.11.7
+
+### Patch Changes
+
+- 2cd2bbf: Add a `/` in the URL
+
 ## 0.11.6
 
 ### Patch Changes
