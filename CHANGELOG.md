@@ -1,5 +1,11 @@
 # @absmach/magistrala-sdk
 
+## 0.11.9
+
+### Patch Changes
+
+- 630d277: Add domainId to Send Messages
+
 ## 0.11.8
 
 ### Patch Changes
