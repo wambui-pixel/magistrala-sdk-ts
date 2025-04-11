@@ -48,7 +48,7 @@ describe("Messages", () => {
       JSON.stringify({ status: 200, message: "Message sent successfully" }),
     );
 
-    const response = await sdk.messages.Send(channelId, msg, clientKey, domainId);
+    const response = await sdk.messages.Send(domainId, channelId, msg, clientKey);
     expect(response).toEqual({
       status: 200,
       message: "Message sent successfully",

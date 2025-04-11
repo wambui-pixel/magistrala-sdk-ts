@@ -40,20 +40,20 @@ export default class Messages {
 
   /**
    * @method Send- Sends message to a given Channel via HTTP adapter. The client and Channel must exist and the client connected to the Channel.
+   * @param {string} domainId - The unique ID of the domain of the channel and the client.
    * @param {string} channelId - The ID of the Channel to send the message to.
    * @param {string} msg - Message to send to the Channel that should be in encoded into
    *       bytes format for example:
    *       [{"bn":"demo", "bu":"V", "n":"voltage", "u":"V", "v":5}]
    * @param {string} clientKey - The secret of the client sending the message.
-   * @param {string} domainId - The unique ID of the domain of the channel and the client.
    * @returns {Promise<Response>} response - A promise that resolves when the message is sent.
    * @throws {Error} - If the message cannot be sent.
    */
   public async Send(
+    domainId: string,
     channelId: string,
     msg: string,
     clientKey: string,
-    domainId: string,
   ): Promise<Response> {
     const chanNameParts = channelId.split(".");
     const chanId = chanNameParts.shift()!;
