@@ -14,7 +14,7 @@ const token = "<token>";
 const domainId = "<domainId>";
 
 mySdk.messages
-  .Send(domainId, "<channelId>", "<message>", "<clientKey>")
+  .Send(domainId, "<topic>", "<secret>", "<message>")
   .then((response: any) => {
     console.log("response: ", response);
   })
