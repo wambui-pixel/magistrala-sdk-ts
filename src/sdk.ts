@@ -13,6 +13,7 @@ import Health from "./health";
 import Clients from "./clients";
 import Rules from "./re";
 import PATs from "./pats";
+import Alarms from "./alarms";
 
 export type {
   User,
@@ -80,7 +81,11 @@ export type {
   ScopesPage,
   ScopesPageMeta,
   PatPageMeta,
-  PatStatus
+  PatStatus,
+  Alarm,
+  AlarmPageMeta,
+  AlarmsPage,
+  AlarmStatus,
 } from "./defs";
 
 const defaultUrl = "http://localhost";
@@ -98,24 +103,25 @@ export interface SDKConfig {
   journalUrl?: string;
   rulesUrl?: string;
   authUrl?: string;
+  alarmsUrl?: string;
 }
 
 class SDK {
-  users: Users;
+  Users: Users;
 
-  domains: Domains;
+  Domains: Domains;
 
-  clients: Clients;
+  Clients: Clients;
 
-  certs: Certs;
+  Certs: Certs;
 
-  groups: Groups;
+  Groups: Groups;
 
-  channels: Channels;
+  Channels: Channels;
 
-  messages: Messages;
+  Messages: Messages;
 
-  bootstrap: Bootstrap;
+  Bootstrap: Bootstrap;
 
   Journal: Journal;
 
@@ -124,6 +130,8 @@ class SDK {
   Rules: Rules;
 
   PATs: PATs;
+
+  Alarms: Alarms;
 
   constructor({
     usersUrl = defaultUrl,
@@ -138,16 +146,17 @@ class SDK {
     journalUrl = defaultUrl,
     rulesUrl = defaultUrl,
     authUrl = defaultUrl,
+    alarmsUrl = defaultUrl,
   }: SDKConfig = {}) {
-    this.users = new Users({ usersUrl, clientsUrl });
-    this.domains = new Domains({ domainsUrl });
-    this.clients = new Clients({ clientsUrl });
-    this.certs = new Certs(certsUrl);
-    this.groups = new Groups({ groupsUrl });
-    this.channels = new Channels({ channelsUrl });
-    this.messages = new Messages({ readersUrl, httpAdapterUrl });
-    this.bootstrap = new Bootstrap(bootstrapUrl);
-    this.Journal = new Journal(journalUrl);
+    this.Users = new Users({ usersUrl, clientsUrl });
+    this.Domains = new Domains({ domainsUrl });
+    this.Clients = new Clients({ clientsUrl });
+    this.Certs = new Certs({ certsUrl });
+    this.Groups = new Groups({ groupsUrl });
+    this.Channels = new Channels({ channelsUrl });
+    this.Messages = new Messages({ readersUrl, httpAdapterUrl });
+    this.Bootstrap = new Bootstrap({ bootstrapUrl });
+    this.Journal = new Journal({ journalUrl });
     this.Health = new Health({
       usersUrl,
       clientsUrl,
@@ -162,7 +171,8 @@ class SDK {
       authUrl,
     });
     this.Rules = new Rules({ rulesUrl });
-    this.PATs = new PATs(authUrl);
+    this.PATs = new PATs({ authUrl });
+    this.Alarms = new Alarms({ alarmsUrl });
   }
 }
 

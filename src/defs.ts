@@ -598,3 +598,54 @@ export interface ScopesPageMeta extends BasicPageMeta {
   pat_id?: string;
   id?: string;
 }
+
+export type AlarmStatus = "active" | "cleared" | "all";
+
+export interface Alarm {
+  id?: string;
+  rule_id?: string;
+  domain_id?: string;
+  channel_id?: string;
+  client_id?: string;
+  subtopic?: string;
+  measurement?: string;
+  value?: string;
+  unit?: string;
+  threshold?: string;
+  cause?: string;
+  status?: AlarmStatus;
+  severity?: number;
+  assignee_id?: string;
+  created_at?: Date;
+  updated_at?: Date;
+  updated_by?: string;
+  assigned_at?: Date;
+  assigned_by?: string;
+  acknowledged_at?: Date;
+  acknowledged_by?: string;
+  resolved_at?: Date;
+  resolved_by?: string;
+  metadata?: Record<string, any>;
+}
+
+export interface AlarmsPage {
+  offset: number;
+  limit: number;
+  total: number;
+  alarms: Alarm[];
+}
+
+export interface AlarmPageMeta extends BasicPageMeta {
+  domain_id?: string;
+  channel_id?: string;
+  client_id?: string;
+  subtopic?: string;
+  rule_id?: string;
+  status?: AlarmStatus;
+  assignee_id?: string;
+  severity?: number;
+  updated_by?: string;
+  assigned_by?: string;
+  acknowledged_by?: string;
+  resolved_by?: string;
+}
