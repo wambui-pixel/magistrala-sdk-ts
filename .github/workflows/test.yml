@@ -25,7 +25,6 @@ jobs:
           node-version: 20.x
           always-auth: false
           check-latest: true
-          cache: 'npm'
 
       - name: Install dependencies
         run: npm install
