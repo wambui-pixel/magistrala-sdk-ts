@@ -41,7 +41,7 @@ mgSdk.Rules.update(
   {
     id: "<ruleId>",
     name: "<updatedName>",
-    logic: { type: 1, value: "<value>" },
+    logic: { type: 1, value: "<value>", outputs: ["save_senml"] },
   },
   token
 )
