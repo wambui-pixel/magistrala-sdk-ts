@@ -690,13 +690,14 @@ export interface MetricConfig {
   from?: string;
   to?: string;
   aggregation?: AggConfig;
+  file_format?: string;
 }
 
 export interface Email {
   to?: string[];
-  from?: string;
   subject?: string;
   format?: string;
+  content?: string;
 }
 
 export interface ReportConfig {
