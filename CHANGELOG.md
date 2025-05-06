@@ -1,5 +1,11 @@
 # @absmach/magistrala-sdk
 
+## 0.13.3
+
+### Patch Changes
+
+- 2c9a69b: This changes the clients field in metrics section of reports from a string to a string array
+
 ## 0.13.2
 
 ### Patch Changes
