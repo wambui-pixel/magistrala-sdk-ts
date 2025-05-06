@@ -1,5 +1,11 @@
 # @absmach/magistrala-sdk
 
+## 0.13.4
+
+### Patch Changes
+
+- 7ab5054: Add request metric
+
 ## 0.13.3
 
 ### Patch Changes
