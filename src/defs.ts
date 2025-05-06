@@ -664,6 +664,15 @@ export interface Report {
 
 export interface Metric {
   channel_id?: string | ChannelBasicInfo;
+  client_id?: string;
+  name?: string;
+  subtopic?: string;
+  protocol?: string;
+  format?: string;
+}
+
+export interface ReqMetric {
+  channel_id?: string | ChannelBasicInfo;
   client_ids?: string[];
   name?: string;
   subtopic?: string;
@@ -709,7 +718,7 @@ export interface ReportConfig {
   schedule?: Schedule;
   config?: MetricConfig;
   email?: Email;
-  metrics?: Metric[];
+  metrics?: ReqMetric[];
   status?: Status;
   created_at?: Date;
   created_by?: string;

@@ -96,6 +96,7 @@ export type {
   Email,
   ReportConfig,
   ReportConfigPage,
+  ReqMetric,
 } from "./defs";
 
 const defaultUrl = "http://localhost";

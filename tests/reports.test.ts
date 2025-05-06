@@ -3,14 +3,13 @@
 
 import fetchMock, { enableFetchMocks } from "jest-fetch-mock";
 import SDK, {
-  Metric,
   Report,
   ReportConfig,
   ReportConfigPage,
   ReportPage,
   SenMLMessage,
 } from "../src/sdk";
-import { Schedule } from "../src/defs";
+import { ReqMetric, Schedule } from "../src/defs";
 
 enableFetchMocks();
 
@@ -25,7 +24,7 @@ describe("Reports SDK", () => {
     limit: 10,
   };
 
-  const metric: Metric = {
+  const metric: ReqMetric = {
     channel_id: "channel",
     client_ids: ["client"],
     name: "temp",
