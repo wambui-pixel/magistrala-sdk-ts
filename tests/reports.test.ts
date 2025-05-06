@@ -27,7 +27,7 @@ describe("Reports SDK", () => {
 
   const metric: Metric = {
     channel_id: "channel",
-    client_id: "client",
+    client_ids: ["client"],
     name: "temp",
     subtopic: "",
     protocol: "",

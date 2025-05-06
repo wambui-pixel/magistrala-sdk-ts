@@ -664,7 +664,7 @@ export interface Report {
 
 export interface Metric {
   channel_id?: string | ChannelBasicInfo;
-  client_id?: string | ClientBasicInfo;
+  client_ids?: string[];
   name?: string;
   subtopic?: string;
   protocol?: string;
@@ -687,6 +687,7 @@ export interface AggConfig {
 }
 
 export interface MetricConfig {
+  title?: string;
   from?: string;
   to?: string;
   aggregation?: AggConfig;

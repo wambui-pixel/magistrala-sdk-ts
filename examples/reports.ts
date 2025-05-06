@@ -18,6 +18,7 @@ mgSdk.Reports.generateReport(
     name: "report 1",
     description: "This is my first report",
     config: {
+      title: "Report Title",
       from: "now()-5d",
       to: "now()",
       aggregation: {
@@ -29,7 +30,7 @@ mgSdk.Reports.generateReport(
       {
         name: "<messageName>",
         channel_id: "<channelId>",
-        client_id: "<clientId>",
+        client_ids: ["<clientId>"],
         subtopic: "",
         protocol: "",
       },
@@ -50,6 +51,7 @@ mgSdk.Reports.addReportConfig(
     name: "report 1",
     description: "This is my first report",
     config: {
+      title: "Report Title",
       from: "now()-5d",
       to: "now()",
       aggregation: {
@@ -61,11 +63,18 @@ mgSdk.Reports.addReportConfig(
       {
         name: "<messageName>",
         channel_id: "<channelId>",
-        client_id: "<clientId>",
+        client_ids: ["<clientId>"],
         subtopic: "",
         protocol: "",
       },
     ],
+    email: {
+      to: [
+        "user1@example.com"
+      ],
+      subject: "Instant report from Magistrala stage",
+      content: "Hi, \n Please find the attached instant report from Magistrala stage"
+    }
   },
   token
 )
