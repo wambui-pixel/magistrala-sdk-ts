@@ -663,8 +663,8 @@ export interface Report {
 }
 
 export interface Metric {
-  channel_id?: string | ChannelBasicInfo;
-  client_id?: string;
+  channel_id: string | ChannelBasicInfo;
+  client_id?: string | ClientBasicInfo;
   name?: string;
   subtopic?: string;
   protocol?: string;
@@ -672,8 +672,8 @@ export interface Metric {
 }
 
 export interface ReqMetric {
-  channel_id?: string | ChannelBasicInfo;
-  client_ids?: string[];
+  channel_id: string | ChannelBasicInfo;
+  client_ids?: string[] | ClientBasicInfo[];
   name?: string;
   subtopic?: string;
   protocol?: string;
