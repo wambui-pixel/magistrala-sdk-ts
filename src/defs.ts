@@ -151,6 +151,7 @@ export interface Channel extends ChannelBasicInfo {
   connection_types?: string[];
   member_id?: string;
   roles?: MemberRoleActions[];
+  route?: string;
 }
 
 export interface ChannelsPage {
