@@ -1,5 +1,11 @@
 # @absmach/magistrala-sdk
 
+## 0.13.7
+
+### Patch Changes
+
+- 7fa2c4e: Add route to channel interface
+
 ## 0.13.6
 
 ### Patch Changes
