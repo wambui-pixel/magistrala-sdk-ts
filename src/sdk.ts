@@ -93,10 +93,13 @@ export type {
   ReportPage,
   AggConfig,
   MetricConfig,
-  Email,
+  EmailSetting,
+  Aggregation,
   ReportConfig,
   ReportConfigPage,
   ReqMetric,
+  Format,
+  ReportFile,
 } from "./defs";
 
 const defaultUrl = "http://localhost";

@@ -681,18 +681,38 @@ export interface ReqMetric {
   format?: string;
 }
 
+export enum Format {
+  PDF = "pdf",
+  CSV = "csv",
+  ALL = "AllFormats"
+}
+
+export interface ReportFile {
+  name?: string;
+  data?: number[];
+  format?: Format;
+}
+
 export interface ReportPage {
   total: number;
   from?: Date;
   to?: Date;
   aggregation?: AggConfig;
   reports: Report[];
-  pdf?: Uint8Array;
-  csv?: Uint8Array;
+  file?: ReportFile;
+}
+
+export enum Aggregation {
+  NONE = "none",
+  MAX = "max",
+  MIN = "min",
+  SUM = "sum",
+  COUNT = "count",
+  AVG = "avg"
 }
 
 export interface AggConfig {
-  agg_type?: string;
+  agg_type?: Aggregation;
   interval?: string;
 }
 
@@ -701,13 +721,12 @@ export interface MetricConfig {
   from?: string;
   to?: string;
   aggregation?: AggConfig;
-  file_format?: string;
+  file_format?: Format;
 }
 
-export interface Email {
+export interface EmailSetting {
   to?: string[];
   subject?: string;
-  format?: string;
   content?: string;
 }
 
@@ -718,7 +737,7 @@ export interface ReportConfig {
   domain_id?: string;
   schedule?: Schedule;
   config?: MetricConfig;
-  email?: Email;
+  email?: EmailSetting;
   metrics?: ReqMetric[];
   status?: Status;
   created_at?: Date;
