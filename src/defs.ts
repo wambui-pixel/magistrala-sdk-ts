@@ -681,14 +681,25 @@ export interface ReqMetric {
   format?: string;
 }
 
+export enum Format {
+  PDF = "pdf",
+  CSV = "csv",
+  ALL = "AllFormats"
+}
+
+export interface ReportFile {
+  name?: string;
+  data?: number[];
+  format?: Format;
+}
+
 export interface ReportPage {
   total: number;
   from?: Date;
   to?: Date;
   aggregation?: AggConfig;
   reports: Report[];
-  pdf?: Uint8Array;
-  csv?: Uint8Array;
+  file?: ReportFile;
 }
 
 export interface AggConfig {
