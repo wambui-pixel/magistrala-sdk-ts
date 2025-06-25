@@ -464,15 +464,16 @@ export interface MembersPage {
   limit: number;
 }
 
-export type ScriptOutput =
-  | "channels"
-  | "save_senml"
-  | "alarms"
-  | "email"
-  | "save_remote_pg";
+export enum OutputType {
+  CHANNELS = "channels",
+  SAVE_SENML = "save_senml",
+  ALARMS = "alarms",
+  EMAIL = "email",
+  SAVE_REMOTE_PG = "save_remote_pg",
+}
+
 export interface Script {
   type: number;
-  outputs: ScriptOutput[];
   value: string;
 }
 
@@ -494,14 +495,38 @@ export interface Rule {
   input_channel?: string;
   input_topic?: string;
   logic?: Script;
-  output_channel?: string;
-  output_topic?: string;
+  outputs?: Output[];
   schedule?: Schedule;
   status?: RuleStatus;
   created_by?: string;
   created_at?: Date;
   updated_at?: Date;
   updated_by?: string;
+}
+
+export interface Output {
+  type: OutputType;
+}
+
+export interface ChannelOutput extends Output {
+  channel: string | ChannelBasicInfo;
+  topic?: string;
+}
+
+export interface EmailOutput extends Output {
+  to: string[];
+  subject?: string;
+  content?: string;
+}
+
+export interface PostgresDBOutput extends Output {
+  host: string;
+  port: number;
+  user: string;
+  password: string;
+  database: string;
+  table: string;
+  mapping?: string;
 }
 
 export interface RulesPageMetadata {
@@ -511,7 +536,6 @@ export interface RulesPageMetadata {
   dir?: string;
   name?: string;
   input_channel?: string;
-  output_channel?: string;
   status?: RuleStatus;
 }
 
@@ -684,7 +708,7 @@ export interface ReqMetric {
 export enum Format {
   PDF = "pdf",
   CSV = "csv",
-  ALL = "AllFormats"
+  ALL = "AllFormats",
 }
 
 export interface ReportFile {
@@ -708,7 +732,7 @@ export enum Aggregation {
   MIN = "min",
   SUM = "sum",
   COUNT = "count",
-  AVG = "avg"
+  AVG = "avg",
 }
 
 export interface AggConfig {
