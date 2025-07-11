@@ -763,6 +763,7 @@ export interface ReportConfig {
   config?: MetricConfig;
   email?: EmailSetting;
   metrics?: ReqMetric[];
+  report_template?: string;
   status?: Status;
   created_at?: Date;
   created_by?: string;
