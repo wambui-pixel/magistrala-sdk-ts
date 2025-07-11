@@ -404,4 +404,120 @@ export default class Reports {
       throw error;
     }
   }
+
+  /**
+   * Updates report template.
+   * @param {string} domainId - The unique ID of the domain.
+   * @param {string} reportId - The unique ID of the report.
+   * @param {string} reportTemplate - Template for the report.
+   * @param {string} token - Authorization token.
+   * @returns {Promise<void>} - Resolves if the template was successfully updated.
+   * @throws {Error} - If the configuration cannot be disabled.
+   */
+  public async updateReportTemplate(
+    domainId: string,
+    reportId: string,
+    reportTemplate: string,
+    token: string
+  ): Promise<void> {
+    const options: RequestInit = {
+      method: "PUT",
+      headers: {
+        "Content-Type": this.contentType,
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ report_template: reportTemplate }),
+    };
+    try {
+      const response = await fetch(
+        new URL(
+          `${domainId}/${this.reportsEndpoint}/${this.configsEndpoint}/${reportId}/template`,
+          this.reportsUrl
+        ).toString(),
+        options
+      );
+      if (!response.ok) {
+        const errorRes = await response.json();
+        throw Errors.HandleError(errorRes.message, response.status);
+      }
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  /**
+   * Views report template.
+   * @param {string} domainId - The unique ID of the domain.
+   * @param {string} reportId - The unique ID of the report.
+   * @param {string} token - Authorization token.
+   * @returns {Promise<string>} - The template used to generate report configuration.
+   * @throws {Error} - If the report template cannot be retrieved.
+   */
+  public async viewReportTemplate(
+    domainId: string,
+    reportId: string,
+    token: string
+  ): Promise<string> {
+    const options: RequestInit = {
+      method: "GET",
+      headers: {
+        "Content-Type": this.contentType,
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    try {
+      const response = await fetch(
+        new URL(
+          `${domainId}/${this.reportsEndpoint}/${this.configsEndpoint}/${reportId}/template`,
+          this.reportsUrl
+        ).toString(),
+        options
+      );
+      if (!response.ok) {
+        const errorRes = await response.json();
+        throw Errors.HandleError(errorRes.message, response.status);
+      }
+      const template: string = await response.json();
+      return template;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  /**
+   * Deletes report template.
+   * @param {string} domainId - The unique ID of the domain.
+   * @param {string} reportId - The unique ID of the report.
+   * @param {string} token - Authorization token.
+   *  @returns {Promise<void>} - Resolves if the template was successfully deleted.
+   * @throws {Error} - If the report template cannot be deleted.
+   */
+  public async deleteReportTemplate(
+    domainId: string,
+    reportId: string,
+    token: string
+  ): Promise<void> {
+    const options: RequestInit = {
+      method: "DELETE",
+      headers: {
+        "Content-Type": this.contentType,
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    try {
+      const response = await fetch(
+        new URL(
+          `${domainId}/${this.reportsEndpoint}/${this.configsEndpoint}/${reportId}/template`,
+          this.reportsUrl
+        ).toString(),
+        options
+      );
+      if (!response.ok) {
+        const errorRes = await response.json();
+        throw Errors.HandleError(errorRes.message, response.status);
+      }
+    } catch (error) {
+      throw error;
+    }
+  }
 }

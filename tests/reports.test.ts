@@ -76,6 +76,8 @@ describe("Reports SDK", () => {
     total: 1,
   };
 
+  const reportTemplate: string = "";
+
   beforeEach(() => {
     jest.clearAllMocks();
   });
@@ -198,5 +200,35 @@ describe("Reports SDK", () => {
       token
     );
     expect(response).toEqual(reportConfig);
+  });
+
+  test("Update report template should update a report template", async () => {
+    const response = await sdk.Reports.updateReportTemplate(
+      domainId,
+      reportConfig.id as string,
+      reportTemplate,
+      token
+    );
+    expect(response).toBeUndefined();
+  });
+
+  test("View report template should return a report template", async () => {
+    fetchMock.mockResponseOnce(JSON.stringify(reportTemplate));
+
+    const response = await sdk.Reports.viewReportTemplate(
+      domainId,
+      reportConfig.id as string,
+      token
+    );
+    expect(response).toEqual(reportTemplate);
+  });
+
+  test("Delete report template should delete a report template", async () => {
+    const response = await sdk.Reports.deleteReportTemplate(
+      domainId,
+      reportConfig.id as string,
+      token
+    );
+    expect(response).toBeUndefined();
   });
 });
